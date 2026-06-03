@@ -102,7 +102,7 @@ function Footer() {
         </div>
         <div className="mt-8 pt-8 border-t border-[hsl(var(--border))] flex flex-col sm:flex-row justify-between items-center gap-2">
           <p className="text-xs text-[hsl(var(--muted-foreground))]">© 2026 MejoresReseñas. Todos los derechos reservados.</p>
-          <p className="text-xs text-[hsl(var(--muted-foreground))]">Ciudad Juárez, Chihuahua, México · contacto@mejoresresenas.com</p>
+          <p className="text-xs text-[hsl(var(--muted-foreground))]">Ciudad Juárez, Chihuahua, México · contacto@mejoresreviews.com</p>
         </div>
       </div>
     </footer>

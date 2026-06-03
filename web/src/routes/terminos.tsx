@@ -97,7 +97,7 @@ function Terminos() {
 
       <Section title="11. Contacto">
         <p>MejoresReseñas · Ciudad Juárez, Chihuahua, México</p>
-        <p>Correo: <a href="mailto:contacto@mejoresresenas.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresresenas.com</a></p>
+        <p>Correo: <a href="mailto:contacto@mejoresreviews.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresreviews.com</a></p>
       </Section>
     </div>
   );

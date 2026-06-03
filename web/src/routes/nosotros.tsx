@@ -59,10 +59,10 @@ function Nosotros() {
         <h3 className="text-xl font-bold mb-2">¿Tienes preguntas o quieres saber más?</h3>
         <p className="text-[hsl(var(--muted-foreground))] mb-4">Escríbenos directamente. Respondemos el mismo día.</p>
         <a
-          href="mailto:contacto@mejoresresenas.com"
+          href="mailto:contacto@mejoresreviews.com"
           className="text-[hsl(var(--primary))] font-medium hover:underline"
         >
-          contacto@mejoresresenas.com
+          contacto@mejoresreviews.com
         </a>
       </div>
     </div>

@@ -25,7 +25,7 @@ function Privacidad() {
         <p>
           MejoresReseñas ("nosotros", "nuestra plataforma") es un servicio operado desde Ciudad Juárez, Chihuahua, México. Nos dedicamos a ayudar a negocios locales a conseguir más reseñas auténticas en Google y a mejorar su visibilidad en Google Maps, siempre dentro de las políticas de Google.
         </p>
-        <p>Contacto: <a href="mailto:contacto@mejoresresenas.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresresenas.com</a></p>
+        <p>Contacto: <a href="mailto:contacto@mejoresreviews.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresreviews.com</a></p>
       </Section>
 
       <Section title="2. Información que recopilamos">
@@ -68,7 +68,7 @@ function Privacidad() {
 
       <Section title="6. Retención y eliminación de datos">
         <p>
-          Los datos de tu perfil de negocio se conservan mientras tengas una cuenta activa. Al cerrar tu cuenta eliminamos todos tus datos en un plazo de 30 días. Puedes solicitar la eliminación anticipada escribiéndonos a <a href="mailto:contacto@mejoresresenas.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresresenas.com</a>.
+          Los datos de tu perfil de negocio se conservan mientras tengas una cuenta activa. Al cerrar tu cuenta eliminamos todos tus datos en un plazo de 30 días. Puedes solicitar la eliminación anticipada escribiéndonos a <a href="mailto:contacto@mejoresreviews.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresreviews.com</a>.
         </p>
       </Section>
 
@@ -85,7 +85,7 @@ function Privacidad() {
       </Section>
 
       <Section title="9. Tus derechos">
-        <p>Tienes derecho a acceder, corregir y eliminar tu información. Para ejercer estos derechos escríbenos a <a href="mailto:contacto@mejoresresenas.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresresenas.com</a>. Respondemos en un máximo de 5 días hábiles.</p>
+        <p>Tienes derecho a acceder, corregir y eliminar tu información. Para ejercer estos derechos escríbenos a <a href="mailto:contacto@mejoresreviews.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresreviews.com</a>. Respondemos en un máximo de 5 días hábiles.</p>
       </Section>
 
       <Section title="10. Cambios a esta política">
@@ -96,7 +96,7 @@ function Privacidad() {
 
       <Section title="11. Contacto">
         <p>MejoresReseñas · Ciudad Juárez, Chihuahua, México</p>
-        <p>Correo: <a href="mailto:contacto@mejoresresenas.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresresenas.com</a></p>
+        <p>Correo: <a href="mailto:contacto@mejoresreviews.com" className="text-[hsl(var(--primary))] hover:underline">contacto@mejoresreviews.com</a></p>
       </Section>
     </div>
   );
