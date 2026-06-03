@@ -1,0 +1,12 @@
+{
+  "name": "mejoresreviews",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy"
+  },
+  "dependencies": {
+    "convex": "^1.13.0"
+  }
+}

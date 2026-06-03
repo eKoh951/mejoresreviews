@@ -1,0 +1,85 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fswiss\fprq2\fcharset0 Arial;}{\f2\fmodern\fprq1\fcharset0 Courier New;}}
+{\colortbl;\red0\green0\blue0;\red0\green70\blue127;\red80\green80\blue80;\red240\green240\blue240;}
+{\*\generator Mejores Resenas Doc 1.0;}
+\widowctrl\widctlpar\adjustright\viewkind4\uc1
+\paperw12240\paperh15840\margl1440\margr1440\margt1440\margb1440
+
+{\pard\qc\sb400\sa200{\f1\fs36\b\cf2 Mejores Rese\u241?as}\par}
+{\pard\qc\sa100{\f1\fs22\cf3 Google Ads API 舒? Tool Design Document}\par}
+{\pard\qc\sa400{\f1\fs18\cf3 Version 1.0 舒? June 2, 2026}\par}
+
+{\pard\sa120{\f1\fs18\cf3 Company: {\b Mejores Rese\u241?as}}\par}
+{\pard\sa120{\f1\fs18\cf3 Website: {\b mejoresreviews.com}}\par}
+{\pard\sa120{\f1\fs18\cf3 Contact: {\b greatekoh@gmail.com}}\par}
+{\pard\sa400{\f1\fs18\cf3 Prepared for: Google Ads API Developer Token Application}\par}
+
+{\pard\sb300\sa120{\f1\fs26\b\cf2 1. Company Overview}\par}
+{\pard\sa200{\f1\fs20 Mejores Rese\u241?as is a market research and SaaS platform that helps small and medium-sized businesses in Mexico 舒? primarily restaurants, caf\'e9s, and service businesses in Ciudad Ju\'e1rez and Chihuahua 舒? improve their Google Business Profile visibility and earn more legitimate customer reviews.\par}}
+{\pard\sa200{\f1\fs20 Our platform provides business owners with keyword demand data, review management guidance, and local SEO insights based entirely on ethical, Google-compliant practices. We do not facilitate, generate, or recommend fake or purchased reviews under any circumstances.\par}}
+
+{\pard\sb300\sa120{\f1\fs26\b\cf2 2. Purpose of Google Ads API Access}\par}
+{\pard\sa120{\f1\fs20 We are requesting access to the Google Ads API exclusively to retrieve {\b keyword search volume and competitive demand data} for internal market research. No advertising campaigns are created, managed, or modified.\par}}
+{\pard\sa80{\f1\fs20\b Specifically, we use:}\par}
+{\pard\li360\sa80{\f1\fs20\bullet\tab {\b KeywordPlanIdeaService.generateKeywordHistoricalMetrics} 舒? to retrieve average monthly searches, competition level, competition index, and top-of-page bid ranges for a predefined list of Spanish and English keywords related to Google reviews, Google Business Profile, and local SEO.}\par}
+{\pard\li360\sa200{\f1\fs20\bullet\tab Geographic targeting: Mexico (geo ID 2484), Chihuahua state (geo ID 21177), Ciudad Ju\'e1rez (geo ID 1010166). Language targeting: Spanish (language ID 1003).}\par}
+{\pard\sa80{\f1\fs20\b We do NOT use the API to:}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab Create, modify, or delete advertising campaigns, ad groups, or ads}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab Access or manage any third-party client ad accounts}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab Automate bidding, budgets, or targeting decisions}\par}
+{\pard\li360\sa200{\f1\fs20\bullet\tab Perform any write or mutate operations of any kind}\par}
+
+{\pard\sb300\sa120{\f1\fs26\b\cf2 3. Tool Architecture & Data Flow}\par}
+{\pard\sa120{\f1\fs20\b Step 1 舒? Seed keyword list}\par}
+{\pard\sa120{\f1\fs20 A curated, manually reviewed list of approximately 50 seed keywords in Spanish and English is maintained in a local DuckDB database. Keywords are categorized by intent (informational, commercial, navigational) and compliance risk. Risky or non-compliant intent keywords (e.g., 舠?buy fake reviews舡?) are stored for competitive awareness only and are never used as API inputs.}\par}
+{\pard\sa120{\f1\fs20\b Step 2 舒? API call}\par}
+{\pard\sa120{\f1\fs20 The Python script {\f2\fs18 scripts/02_google_ads_keywords.py} calls {\f2\fs18 KeywordPlanIdeaService.generateKeywordHistoricalMetrics} with the keyword list, geo targets, and language constant. The script is run manually by the developer; it is not scheduled or automated.}\par}
+{\pard\sa120{\f1\fs20\b Step 3 舒? Raw storage}\par}
+{\pard\sa120{\f1\fs20 API responses are written as immutable, date-stamped Apache Parquet files to a local directory ({\f2\fs18 data/raw/google_ads/YYYY-MM-DD/}). These files are never committed to version control.}\par}
+{\pard\sa120{\f1\fs20\b Step 4 舒? Normalization & analysis}\par}
+{\pard\sa200{\f1\fs20 A DuckDB analytics database reads the Parquet files, normalizes the data (accent/casing variants, deduplication), applies confidence scores (Google Ads values are marked {\f2\fs18 is_bucketed = true} since volumes are rounded), and stores results in structured tables for internal reporting.}\par}
+
+{\pard\sb300\sa120{\f1\fs26\b\cf2 4. API Calls Summary}\par}
+{\pard\sa200
+{\f1\fs20
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw15\brdrs\clbrdrl\brdrw15\brdrs\clbrdrb\brdrw15\brdrs\clbrdrr\brdrw15\brdrs\cellx2700
+\clbrdrt\brdrw15\brdrs\clbrdrl\brdrw15\brdrs\clbrdrb\brdrw15\brdrs\clbrdrr\brdrw15\brdrs\cellx5400
+\clbrdrt\brdrw15\brdrs\clbrdrl\brdrw15\brdrs\clbrdrb\brdrw15\brdrs\clbrdrr\brdrw15\brdrs\cellx7560
+\clbrdrt\brdrw15\brdrs\clbrdrl\brdrw15\brdrs\clbrdrb\brdrw15\brdrs\clbrdrr\brdrw15\brdrs\cellx9720
+{\pard\intbl\b Service\cell}{\pard\intbl\b Method\cell}{\pard\intbl\b Purpose\cell}{\pard\intbl\b Est. Frequency\cell}\row
+{\pard\intbl KeywordPlanIdeaService\cell}{\pard\intbl generateKeywordHistoricalMetrics\cell}{\pard\intbl Keyword volume, competition, bids\cell}{\pard\intbl On-demand, manual\cell}\row
+}
+}\par}
+{\pard\sa200{\f1\fs20 {\b Volume estimate:} ~50 keywords \u215? 3 geo targets = 150 keyword-region pairs per run, batched in groups of 20. Approximately 9 API requests per run. Runs are manual and infrequent (weekly or less).}\par}
+
+{\pard\sb300\sa120{\f1\fs26\b\cf2 5. Credentials & Security}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab OAuth 2.0 client credentials and refresh token stored in a local {\f2\fs18 .env} file, excluded from version control via {\f2\fs18 .gitignore}}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab Developer token stored server-side only, never exposed in client-facing code}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab No end-user credentials are collected or stored}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab All API calls are read-only; no write or mutate operations are performed}\par}
+{\pard\li360\sa200{\f1\fs20\bullet\tab A pre-commit secret scanner (gitleaks) is configured to prevent accidental credential commits}\par}
+
+{\pard\sb300\sa120{\f1\fs26\b\cf2 6. Data Handling & Retention}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab Raw API responses stored locally as Parquet files, labeled with collection date}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab All volume data marked {\f2\fs18 is_bucketed = true} (Google Ads rounds search volumes)}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab No personally identifiable information is collected from the API}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab Data used solely for internal market research; not resold, shared, or published at keyword level}\par}
+{\pard\li360\sa200{\f1\fs20\bullet\tab Outputs are aggregated trend and cluster reports, not raw keyword-level disclosures}\par}
+
+{\pard\sb300\sa120{\f1\fs26\b\cf2 7. Compliance Statement}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab This tool is used exclusively by Mejores Rese\u241?as for internal research; no third-party client accounts are accessed}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab The tool performs zero advertising operations (no campaigns, bids, or ads created or modified)}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab Fake review generation, review gating, and purchased reviews are explicitly excluded from the product scope by design}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab All usage is intended to comply with the Google Ads API Terms of Service and Developer Program Policies}\par}
+{\pard\li360\sa200{\f1\fs20\bullet\tab The customer ID used is the developer舗?s own Google Ads account (ID: 3889381999), not a managed client account}\par}
+
+{\pard\sb300\sa120{\f1\fs26\b\cf2 8. Technical Stack}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab {\b Language:} Python 3.12}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab {\b Google Ads library:} {\f2\fs18 google-ads} v31 (official PyPI package)}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab {\b Authentication:} OAuth 2.0 via {\f2\fs18 google-auth-oauthlib}}\par}
+{\pard\li360\sa60{\f1\fs20\bullet\tab {\b Storage:} Apache Parquet (raw) + DuckDB (analytics)}\par}
+{\pard\li360\sa200{\f1\fs20\bullet\tab {\b Environment:} Local development machine; no cloud deployment of API credentials}\par}
+
+{\pard\sb400\sa200\brdrb\brdrs\brdrw10{\f1\fs18\cf3\i This document was prepared for the Google Ads API Developer Token application by Mejores Rese\u241?as (mejoresreviews.com). Contact: greatekoh@gmail.com}\par}
+}

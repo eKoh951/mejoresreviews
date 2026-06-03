@@ -1,0 +1,41 @@
+# Secrets
+.env
+creds.json
+*.secret.json
+client_secret_*.json
+.env.local
+.env.*.local
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Data — raw files can be large; track schema/seeds only
+data/raw/
+data/analytics/*.duckdb
+data/analytics/*.duckdb.wal
+*.parquet
+
+# Outputs (regenerable)
+outputs/
+
+# Node / Convex
+node_modules/
+.next/
+.convex/
+convex/_generated/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/settings.json
+.idea/
+*.swp
